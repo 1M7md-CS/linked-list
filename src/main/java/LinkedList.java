@@ -1,5 +1,9 @@
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import java.sql.SQLOutput;
+
 public class LinkedList {
-	private class Node {
+
+	private static class Node {
 		int item;
 		Node next;
 
@@ -45,8 +49,26 @@ public class LinkedList {
 		length++;
 	}
 
+	public void removeFirst() {
+		if (checkEmpty()) return;
+		head = head.next;
+		
+		if (head == null) tail = null;
+		length--;
+	}
+
+
+
 	public boolean isEmpty() {
-		return length == 0;
+		return head == null;
+	}
+
+	private boolean checkEmpty() {
+		if (isEmpty()) {
+			System.out.println("List is empty.");
+			return true;
+		}
+		return false;
 	}
 
 	public void printList() {
