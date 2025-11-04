@@ -113,11 +113,16 @@ public class LinkedList {
 		return length;
 	}
 
-	public void printList() {
+	public String toString() {
+		StringBuilder sb = new StringBuilder("[");
 		Node curr = head;
 		while (curr != null) {
-			System.out.println(curr.item);
+			sb.append(curr.item);
+			if (curr.next != null) sb.append(", ");
 			curr = curr.next;
 		}
+		sb.append("]");
+		return sb.toString();
 	}
+	
 }
