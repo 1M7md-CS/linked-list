@@ -122,6 +122,34 @@ public class LinkedList {
 		prev.next = curr.next;
 		length--;
 	}
+	
+	public void addAtPos(int pos, int item) {
+		if (pos < 0 || pos > length) {
+			System.out.println("Invalid position enter position between 0 and " + length);
+			return;
+		}
+
+		if (pos == 0) {
+			addFirst(item);
+			return;
+		}
+
+		if (pos == length) {
+			addLast(item);
+			return;
+		}
+		
+		Node curr = head, newNode = new Node(item);
+		
+		for (int i = 0; i < pos - 1; i++){
+			curr = curr.next;
+		}
+		
+		newNode.next = curr.next;
+		curr.next = newNode;
+		length++;
+
+	}
 
 	public boolean isEmpty() {
 		return head == null;
