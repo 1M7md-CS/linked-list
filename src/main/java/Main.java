@@ -1,6 +1,6 @@
 public class Main {
 	public static void main(String[] args) {
-		LinkedList<Integer> linkedList = new LinkedList<>();
+		LinkedList linkedList = new LinkedList();
 		
 		linkedList.addFirst(5);
 		linkedList.addLast(10);
@@ -8,7 +8,7 @@ public class Main {
 		linkedList.addFirst(9);
 		linkedList.addLast(4);
 
-		System.out.println(linkedList.printList());
+		linkedList.printList();
 
 	}
 }

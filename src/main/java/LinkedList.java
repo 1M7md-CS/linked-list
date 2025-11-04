@@ -1,9 +1,9 @@
-public class LinkedList<T> {
+public class LinkedList {
 	private class Node {
-		T item;
+		int item;
 		Node next;
 
-		Node(T item) {
+		Node(int item) {
 			this.item = item;
 			next = null;
 		}
@@ -23,7 +23,7 @@ public class LinkedList<T> {
 	}
 
 
-	public void addFirst(T item) {
+	public void addFirst(int item) {
 		Node newNode = new Node(item);
 		if (isEmpty()) {
 			tail = head = newNode;
@@ -34,7 +34,7 @@ public class LinkedList<T> {
 		length++;
 	}
 
-	public void addLast(T item) {
+	public void addLast(int item) {
 		Node newNode = new Node(item);
 		if (isEmpty()) {
 			tail = head = newNode;
@@ -49,21 +49,11 @@ public class LinkedList<T> {
 		return length == 0;
 	}
 
-	public String printList() {
-		if (isEmpty()) return "[]";
-
-		Node ptr = head;
-		StringBuilder sb = new StringBuilder("[");
-
-		while (ptr != null) {
-			sb.append(ptr.item);
-
-			if (ptr.next != null) {
-				sb.append(", ");
-			}
-			ptr = ptr.next;
+	public void printList() {
+		Node curr = head;
+		while (curr != null) {
+			System.out.println(curr.item);
+			curr = curr.next;
 		}
-		sb.append("]");
-		return sb.toString();
 	}
 }
