@@ -19,7 +19,6 @@ public class LinkedList {
 		tail = head = null;
 	}
 
-
 	public void addFirst(int item) {
 		Node newNode = new Node(item);
 		if (isEmpty()) {
@@ -44,30 +43,30 @@ public class LinkedList {
 
 	public void removeFirst() {
 		if (checkEmpty()) return;
-		head = head.next;
 		
+		head = head.next;
 		if (head == null) tail = null;
 		length--;
 	}
 
 	public void removeLast() {
 		if (checkEmpty()) return;
-
+		
 		if (head == tail) {
 			removeFirst();
 			return;
 		}
 
 		Node curr = head;
-		while (curr.next != tail){
+		while (curr.next != tail) {
 			curr = curr.next;
 		}
 		tail = curr;
 		tail.next = null;
 		length--;
 	}
-	
-	public void deleteElement(int item) {
+
+	public void removeElement(int item) {
 		if (checkEmpty()) return;
 		
 		if (head.item == item) {
@@ -79,22 +78,49 @@ public class LinkedList {
 			removeLast();
 			return;
 		}
-		
+
 		Node prev = null, curr = head;
-		
-		while (curr != null && curr.item != item){
+		while (curr != null && curr.item != item) {
 			prev = curr;
 			curr = curr.next;
 		}
 
 		if (curr == null) {
-			System.out.println("Element not found.");
+			System.out.println("Element " + item + " not found.");
 			return;
 		}
-		
+
 		prev.next = curr.next;
 		length--;
-		
+
+	}
+
+	public void removeAtPos(int pos) {
+		if (pos < 0 || pos >= length) {
+			System.out.println("Element at pos " + pos + " not found enter pos <= " + length);
+			return;
+		}
+
+		if (pos == 0) {
+			removeFirst();
+			return;
+		}
+
+		if (pos == length - 1) {
+			removeLast();
+			return;
+		}
+
+
+		Node prev = null, curr = head;
+
+		for (int i = 0; i < pos; i++) {
+			prev = curr;
+			curr = curr.next;
+		}
+
+		prev.next = curr.next;
+		length--;
 	}
 
 	public boolean isEmpty() {
@@ -108,14 +134,15 @@ public class LinkedList {
 		}
 		return false;
 	}
-	
-	public int getLength(){
+
+	public int getLength() {
 		return length;
 	}
-
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder("[");
 		Node curr = head;
+		
 		while (curr != null) {
 			sb.append(curr.item);
 			if (curr.next != null) sb.append(", ");
@@ -124,5 +151,5 @@ public class LinkedList {
 		sb.append("]");
 		return sb.toString();
 	}
-	
+
 }
