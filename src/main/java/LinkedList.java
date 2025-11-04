@@ -66,6 +66,36 @@ public class LinkedList {
 		tail.next = null;
 		length--;
 	}
+	
+	public void deleteElement(int item) {
+		if (checkEmpty()) return;
+		
+		if (head.item == item) {
+			removeFirst();
+			return;
+		}
+		
+		if (tail.item == item) {
+			removeLast();
+			return;
+		}
+		
+		Node prev = null, curr = head;
+		
+		while (curr != null && curr.item != item){
+			prev = curr;
+			curr = curr.next;
+		}
+
+		if (curr == null) {
+			System.out.println("Element not found.");
+			return;
+		}
+		
+		prev.next = curr.next;
+		length--;
+		
+	}
 
 	public boolean isEmpty() {
 		return head == null;
