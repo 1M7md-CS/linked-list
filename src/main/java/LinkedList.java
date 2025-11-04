@@ -1,6 +1,3 @@
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-import java.sql.SQLOutput;
-
 public class LinkedList {
 
 	private static class Node {
@@ -9,10 +6,6 @@ public class LinkedList {
 
 		Node(int item) {
 			this.item = item;
-			next = null;
-		}
-
-		Node() {
 			next = null;
 		}
 
@@ -57,7 +50,22 @@ public class LinkedList {
 		length--;
 	}
 
+	public void removeLast() {
+		if (checkEmpty()) return;
 
+		if (head == tail) {
+			removeFirst();
+			return;
+		}
+
+		Node curr = head;
+		while (curr.next != tail){
+			curr = curr.next;
+		}
+		tail = curr;
+		tail.next = null;
+		length--;
+	}
 
 	public boolean isEmpty() {
 		return head == null;
@@ -69,6 +77,10 @@ public class LinkedList {
 			return true;
 		}
 		return false;
+	}
+	
+	public int getLength(){
+		return length;
 	}
 
 	public void printList() {
