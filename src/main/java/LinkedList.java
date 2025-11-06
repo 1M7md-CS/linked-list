@@ -18,7 +18,7 @@ public class LinkedList {
 		length = 0;
 		tail = head = null;
 	}
-
+	
 	public void addFirst(int item) {
 		Node newNode = new Node(item);
 		if (isEmpty()) {
@@ -41,6 +41,34 @@ public class LinkedList {
 		length++;
 	}
 
+	public void addAtPos(int pos, int item) {
+		if (pos < 0 || pos > length) {
+			System.out.println("Invalid position enter position between 0 and " + length);
+			return;
+		}
+
+		if (pos == 0) {
+			addFirst(item);
+			return;
+		}
+
+		if (pos == length) {
+			addLast(item);
+			return;
+		}
+
+		Node curr = head, newNode = new Node(item);
+
+		for (int i = 0; i < pos - 1; i++){
+			curr = curr.next;
+		}
+
+		newNode.next = curr.next;
+		curr.next = newNode;
+		length++;
+
+	}
+	
 	public void removeFirst() {
 		if (checkEmpty()) return;
 		
@@ -97,7 +125,7 @@ public class LinkedList {
 
 	public void removeAtPos(int pos) {
 		if (pos < 0 || pos >= length) {
-			System.out.println("Element at pos " + pos + " not found enter pos <= " + length);
+			System.out.println("Element at pos " + pos + " not found enter pos < " + length);
 			return;
 		}
 
@@ -123,36 +151,8 @@ public class LinkedList {
 		length--;
 	}
 	
-	public void addAtPos(int pos, int item) {
-		if (pos < 0 || pos > length) {
-			System.out.println("Invalid position enter position between 0 and " + length);
-			return;
-		}
-
-		if (pos == 0) {
-			addFirst(item);
-			return;
-		}
-
-		if (pos == length) {
-			addLast(item);
-			return;
-		}
-		
-		Node curr = head, newNode = new Node(item);
-		
-		for (int i = 0; i < pos - 1; i++){
-			curr = curr.next;
-		}
-		
-		newNode.next = curr.next;
-		curr.next = newNode;
-		length++;
-
-	}
-
 	public boolean isEmpty() {
-		return head == null;
+		return length == 0;
 	}
 
 	private boolean checkEmpty() {
@@ -162,7 +162,7 @@ public class LinkedList {
 		}
 		return false;
 	}
-
+	
 	public int getLength() {
 		return length;
 	}
