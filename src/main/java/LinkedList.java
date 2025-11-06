@@ -43,7 +43,7 @@ public class LinkedList {
 
 	public void addAtPos(int pos, int item) {
 		if (pos < 0 || pos > length) {
-			System.out.println("Invalid position enter position between 0 and " + length);
+			System.out.println("Invalid position: " + pos + ". Valid range: 0 to " + length);
 			return;
 		}
 
@@ -125,7 +125,7 @@ public class LinkedList {
 
 	public void removeAtPos(int pos) {
 		if (pos < 0 || pos >= length) {
-			System.out.println("Element at pos " + pos + " not found enter pos < " + length);
+			System.out.println("Invalid position: " + pos + ". Valid range: 0 to " + (length - 1));
 			return;
 		}
 
