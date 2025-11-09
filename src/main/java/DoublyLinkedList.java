@@ -21,31 +21,29 @@ public class DoublyLinkedList {
 
 	public void addFirst(int item) {
 		Node newNode = new Node(item);
-
+		
 		if (isEmpty()) {
 			head = tail = newNode;
-			length++;
-			return;
+		} else {
+			newNode.next = head;
+			head.prev = newNode;
+			head = newNode;
 		}
-
-		newNode.next = head;
-		head.prev = newNode;
-		head = newNode;
+		
 		length++;
 	}
 
 	public void addLast(int item) {
 		Node newNode = new Node(item);
-
+		
 		if (isEmpty()) {
 			head = tail = newNode;
-			length++;
-			return;
+		} else {
+			newNode.prev = tail;
+			tail.next = newNode;
+			tail = newNode;
 		}
-
-		newNode.prev = tail;
-		tail.next = newNode;
-		tail = newNode;
+		
 		length++;
 	}
 
