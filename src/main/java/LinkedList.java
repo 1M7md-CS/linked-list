@@ -70,7 +70,10 @@ public class LinkedList {
 	}
 	
 	public void removeFirst() {
-		if (checkEmpty()) return;
+		if (isEmpty()) {
+			System.out.println("List is empty.");
+			return;
+		}
 		
 		head = head.next;
 		if (head == null) tail = null;
@@ -78,7 +81,10 @@ public class LinkedList {
 	}
 
 	public void removeLast() {
-		if (checkEmpty()) return;
+		if (isEmpty()) {
+			System.out.println("List is empty.");
+			return;
+		}
 		
 		if (head == tail) {
 			removeFirst();
@@ -95,7 +101,10 @@ public class LinkedList {
 	}
 
 	public void removeElement(int item) {
-		if (checkEmpty()) return;
+		if (isEmpty()) {
+			System.out.println("List is empty.");
+			return;
+		}
 		
 		if (head.item == item) {
 			removeFirst();
@@ -146,21 +155,13 @@ public class LinkedList {
 			prev = curr;
 			curr = curr.next;
 		}
-
+		if (curr.next != null){
 		prev.next = curr.next;
-		length--;
+		length--;}
 	}
 	
 	public boolean isEmpty() {
 		return length == 0;
-	}
-
-	private boolean checkEmpty() {
-		if (isEmpty()) {
-			System.out.println("List is empty.");
-			return true;
-		}
-		return false;
 	}
 	
 	public int getLength() {
