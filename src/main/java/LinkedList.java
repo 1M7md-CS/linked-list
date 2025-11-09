@@ -148,7 +148,6 @@ public class LinkedList {
 			return;
 		}
 
-
 		Node prev = null, curr = head;
 
 		for (int i = 0; i < pos; i++) {
@@ -158,6 +157,29 @@ public class LinkedList {
 		if (curr.next != null){
 		prev.next = curr.next;
 		length--;}
+	}
+	
+	public void reverse(){
+
+		if (isEmpty()) {
+			System.out.println("List is empty.");
+			return;
+		}
+		
+		if (length == 1) return;
+		
+		Node prev = null, curr = head, next;
+		
+		while (curr != null){
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		
+		tail = head;
+		head = prev;
+		
 	}
 	
 	public boolean isEmpty() {
